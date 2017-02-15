@@ -6,16 +6,16 @@ var expect = require('chai').expect;
 
 chai.use(chaiHttp);
 
-describe('API routes for the cars resource', function() {
+describe('API routes for the Pokemons resource', function() {
 
-  it('should list ALL cars on / GET', function(done) {
+  it('should list ALL Pokemons on / GET', function(done) {
     var request = chai.request(app);
     request
       .get('/')
       .end(function(err, res){
         res.should.have.status(200);
         res.should.be.html;
-        res.text.should.match(/ALL CARS/);
+        res.text.should.match(/POKEAPI/);
         res.text.should.match(/Ford Mustang/);
         done();
       });
