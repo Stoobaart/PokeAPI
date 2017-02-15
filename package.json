@@ -1,0 +1,22 @@
+{
+  "name": "poke-api",
+  "version": "1.0.0",
+  "description": "Pokemon database for users to store info of their captured pokemon on",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stoobaart/PokeAPI.git"
+  },
+  "author": "Stuart Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stoobaart/PokeAPI/issues"
+  },
+  "homepage": "https://github.com/Stoobaart/PokeAPI#readme"
+}
