@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var carsController = require('../controllers/pokemons');
+var pokemonsController = require('../controllers/pokemons');
 
 router.route('/')
   .get(pokemonsController.index)
