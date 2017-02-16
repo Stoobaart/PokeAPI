@@ -3,104 +3,125 @@ var chaiHttp = require('chai-http');
 var app = require('../app');
 var should = chai.should();
 var expect = require('chai').expect;
+var Pokemon = require('../models/pokemon');
 
 chai.use(chaiHttp);
 
-describe('API routes for the Pokemons resource', function() {
+describe('Pokemons', function() {
+  var pokemon = new Pokemon({
+    url: "",
+    name: "Stumon",
+    national_id: 1,
+    abilities: "fire",
+    evolutions: "Stumon, Stumonster, Stumonstrocity",
+    descriptions: "The best Pokemon",
+    moves: "many",
+    hp: 70,
+    attack: 40,
+    defence: 20,
+    speed: 18
+  });
 
-  it('should list ALL Pokemons on / GET', function(done) {
+  beforeEach(function(done) {
+    pokemon.save(function(err, newPokemon) {
+      if(err) return console.log(err);
+      pokemon.id = newPokemon.id;
+      done();
+    })
+  })
+
+  afterEach(function(done) {
+    Pokemon.findByIdAndRemove(pokemon.id, function(err) {
+      if(err) return console.log(err);
+      done();
+    })
+  })
+
+  // SHOW
+  it('should list a single pokemon on a /<id> GET', function(done) {
+    var request = chai.request(app);
+    request
+      .get('/' + pokemon.id)
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.should.be.html;
+        res.text.should.match(/Pokemon/);
+        done();
+      });
+  });
+
+  // INDEX
+  it('should list all Pokemons on / GET', function(done) {
     var request = chai.request(app);
     request
       .get('/')
       .end(function(err, res){
         res.should.have.status(200);
         res.should.be.html;
-        res.text.should.match(/POKEAPI/);
-        res.text.should.match(/Ford Mustang/);
+        res.text.should.match(/Pokemon!/);
+        // res.text.should.match(/Testokemon/);
         done();
       });
   });
 
-  it('should list a SINGLE car on /<id> GET', function(done) {
-    chai.request(app)
-      .get('/589de1623eaf33774807a704')
+  // CREATE
+  it('should add a single pokemon on a / POST', function(done) {
+    var request = chai.request(app);
+    request.post('/')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        url: "",
+        name: "Olliemon",
+        national_id: 2,
+        abilities: "ice",
+        evolutions: "Olliemon, Olliemonster, Olliegarch",
+        descriptions: "The 2nd best Pokemon",
+        moves: "many",
+        hp: 70,
+        attack: 40,
+        defence: 20,
+        speed: 18
+      })
       .end(function(err, res){
         res.should.have.status(200);
         res.should.be.html;
-        res.text.should.match(/Mini One/);
+        res.text.should.match(/Olliemon/);
+        res.text.should.match(/ice/);
+        done();
+        // Pokemon.findByIdAndRemove(pokemon.id, function(err) {
+        //   if (err) return console.log(err);
+        //   done();
+        // });
+      });
+  });
+
+  it('should update a SINGLE pokemon on a /<id> PUT', function(done){
+    var request = chai.request(app);
+    request.put('/' + pokemon.id)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({ 'abilities': 'earth', 'hp' : 90 })
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.should.be.html;
+        res.text.should.match(/earth/);
+        res.text.should.match(/hp/);
         done();
       });
   });
 
-  it('should add a SINGLE car on / CAR' , function(done){
-      var request = chai.request(app);
-      request.post('/')
-          .set('content-type', 'application/x-www-form-urlencoded')
-          .send({
-            name: "BMW X6",
-            price: 129999.99,
-            condition: "New",
-            year: 2017,
-            body: "Really, who knows at this point",
-            color: "Green, the color of dolla"
-          })
-          .end(function(err, res){
-            res.should.have.status(200);
-            res.should.be.html;
-            res.text.should.match(/ALL CARS/);
-            request
-              .get('/58a053bf19ba1d8f15d2f35b')
-              .end(function(err, res){
-                  res.should.have.status(200);
-                  res.should.be.html;
-                  res.text.should.match(/BMW X6/);
-                  res.text.should.match(/Green, the color of dolla/);
-                  done();
-              });
+  it('should delete a SINGLE pokemon on a /<id> DELETE', function(done) {
+    var request = chai.request(app)
+    request.delete('/' + pokemon.id)
+      .end(function(err, res){
+        res.should.have.status(200);
+        res.should.be.html;
+        res.text.should.match(/Pokemon/);
+        request
+          .get('/' + pokemon.id)
+          .end(function(err,res){
+            res.should.have.status(404);
+            done();
           });
-  });
-
-  it('should update a SINGLE post on /<id> PUT' , function(done){
-    var request = chai.request(app);
-    request.put('/58a043b1dffe608b2b20e3d7')
-        .set('content-type', 'application/x-www-form-urlencoded')
-        .send({
-          name: "Aston Martin DB7",
-          price: 29999.99,
-          condition: "Used",
-          year: 2005,
-          body: "Coupe",
-          color: "Bond Silver"
-        })
-        .end(function(err, res){
-          res.should.have.status(200);
-          res.should.be.html;
-          res.text.should.match(/ALL CARS/);
-          request
-            .get('/58a043b1dffe608b2b20e3d7')
-            .end(function(err, res){
-                res.should.have.status(200);
-                res.should.be.html;
-                res.text.should.match(/Bond Silver/);
-                done();
-            });
-        });
-  });
-
-
-  it('should delete a SINGLE post on /<id> DELETE' , function(done) {
-    var request = chai.request(app);
-    request.delete('/58a0446886c1698b4671fa13')
-        .end(function(err, res){
-          res.should.have.status(200);
-          res.should.be.html;
-          res.text.should.match(/ALL CARS/);
-          request
-            .get('/58a0446886c1698b4671fa13')
-            .end(function(err, res){
-                res.should.have.status(404);
-                done();
-            });
-        });
+      });
   });
 });
