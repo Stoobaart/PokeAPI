@@ -2,7 +2,7 @@ var Pokemon = require('../models/pokemon');
 
 function indexPokemons(req, res) {
 	Pokemon.find({}, function(err, pokemons) {
-		if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 		res.render("pokemons/index" , {
 			title: "Pokemon",
 			pokemons: pokemons
@@ -13,7 +13,7 @@ function indexPokemons(req, res) {
 function showPokemons(req, res) {
 	Pokemon.findById(req.params.id, function(err, pokemon) {
 		if(!pokemon) return res.status(404).send("Not Found");
-		if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 		res.render("pokemons/show", {
 			title: "Pokemon",
 			pokemon: pokemon
@@ -45,7 +45,7 @@ function newPokemons(req, res) {
 
 function createPokemons(req, res) {
 	Pokemon.create(req.body, function(err, pokemon) {
-		if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 		res.redirect("/");
 	});
 }
@@ -53,8 +53,7 @@ function createPokemons(req, res) {
 function editPokemons(req, res) {
 	Pokemon.findById(req.params.id, function(err, pokemon){
 		if(!pokemon) return res.status(404).send("Not Found");
-		if(err) return res.status(500).send(err);
-		console.log(pokemon)
+		if(err) req.flash('error' , err.message);
 		res.render("pokemons/edit", {
 			title: "Pokemon",
 			pokemon: pokemon
@@ -63,13 +62,12 @@ function editPokemons(req, res) {
 }
 
 function updatePokemons(req, res) {
-	console.log(req.params.id);
 	Pokemon.findByIdAndUpdate(
 		req.params.id, 
 		{ $set: req.body},
 		{ runValidators: true, new: true },
 		function(err, pokemon){
-			if(err) return res.status(500).send(err);
+			if(err) req.flash('error' , err.message);
 			res.redirect("/");
 		}
 	);
