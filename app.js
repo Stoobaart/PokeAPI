@@ -11,6 +11,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var User = require('./models/user');
 
+app.use(express.static('public'))
+
 app.use(cookieParser());
 
 app.use(session({

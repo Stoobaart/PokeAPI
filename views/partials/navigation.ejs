@@ -4,7 +4,7 @@
 	<a href="/new">Add Pokemon</a>
 	<form action="/sessions" method="POST">
 		<input type="hidden" name="_method" value="delete">
-	    <input type="submit" value="Logout">
+	    <input id="logoutBtn" type="submit" value="Logout">
 	</form>
     <p>Welcome, <%= user.first_name %></p>
   <% } else { %>
