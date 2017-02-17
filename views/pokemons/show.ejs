@@ -1,0 +1,19 @@
+<h1><%= pokemon.name %></h1>
+
+<p><%= pokemon.descriptions %></p>
+<ul>
+	<li>Abilities: <%= pokemon.abilities %></li>
+	<li>Evolutions: <%= pokemon.evolutions %></li>
+	<li>Moves: <%= pokemon.moves %></li>
+	<li>HP: <%= pokemon.hp %></li>
+	<li>Attack: <%= pokemon.attack %></li>
+	<li>Defence: <%= pokemon.defence %></li>
+	<li>Speed: <%= pokemon.speed %></li>
+</ul>
+
+<a href="/<%= pokemon.id %>/edit">edit</a>
+
+<form action="/<%= pokemon.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>

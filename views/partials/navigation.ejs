@@ -1,0 +1,14 @@
+<nav>
+  <% if(user) { %>
+  	<a href="/">Home</a>
+	<a href="/new">Add Pokemon</a>
+	<form action="/sessions" method="POST">
+		<input type="hidden" name="_method" value="delete">
+	    <input type="submit" value="Logout">
+	</form>
+    <p>Welcome, <%= user.first_name %></p>
+  <% } else { %>
+	<a href="/sessions/new">Login</a>
+	<a href="/users/new">Sign up</a>
+  <% } %>
+</nav>

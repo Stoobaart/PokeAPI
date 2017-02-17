@@ -1,0 +1,51 @@
+<h1>FORM</h1>
+
+<form action="/<%= pokemon.id %>" method="POST">
+
+	<div>
+		<label>Image URL</label>
+		<input type="text" name="url" value="<%= pokemon.url %>">
+	</div>
+	<div>
+		<label>Name</label>
+		<input type="text" name="name" value="<%= pokemon.name %>">
+	</div>
+	<div>
+		<label>Description</label>
+		<textarea name="descriptions"><%= pokemon.descriptions %></textarea>
+	</div>
+	<div>
+		<label>Abilities</label>
+		<input type="text" name="abilities" value="<%= pokemon.abilities %>">
+	</div>	
+	<div>
+		<label>Evolutions</label>
+		<input type="text" name="evolutions" value="<%= pokemon.evolutions %>">
+	</div>	
+	<div>
+		<label>Moves</label>
+		<input type="text" name="moves" value="<%= pokemon.moves %>">
+	</div>
+	<div>
+		<label>HP</label>
+		<input type="number" name="hp" value="<%= pokemon.hp %>" min="0" max="999">
+	</div>
+	<div>
+		<label>Attack</label>
+		<input type="number" name="attack" value="<%= pokemon.attack %>" min="0" max="999">
+	</div>
+	<div>
+		<label>Defence</label>
+		<input type="number" name="defence" value="<%= pokemon.defence %>" min="0" max="999">
+	</div>
+	<div>
+		<label>Speed</label>
+		<input type="number" name="speed" value="<%= pokemon.speed %>" min="0" max="999">
+	</div>
+
+	<input type="submit" value="Save Pokemon!">
+	<% if(pokemon.id !== "") { %>
+		<input type="hidden" name="_method" value="PUT">
+	<% } %>
+
+</form>

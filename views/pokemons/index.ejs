@@ -1,0 +1,24 @@
+<h1>Pokemon!</h1>
+
+<div class="container">
+	<div class="row">
+		<% for(var i = 0; i < pokemons.length; i++ ) { %>
+				<div class="col-sm-4">
+					<div class="card">
+						<img src= <%= pokemons[i].url %> >
+						<h3><a href="/<%= pokemons[i]._id %>"><%= pokemons[i].name %></a></h3>
+						<p><%= pokemons[i].descriptions %></p>
+						<ul>
+							<li>Abilities: <%= pokemons[i].abilities %></li>
+							<li>Evolutions: <%= pokemons[i].evolutions %></li>
+							<li>Moves: <%= pokemons[i].moves %></li>
+							<li>HP: <%= pokemons[i].hp %></li>
+							<li>Attack: <%= pokemons[i].attack %></li>
+							<li>Defence: <%= pokemons[i].defence %></li>
+							<li>Speed: <%= pokemons[i].speed %></li>
+						</ul>
+					</div>
+				</div>
+		<% } %>
+	</div>
+</div>
