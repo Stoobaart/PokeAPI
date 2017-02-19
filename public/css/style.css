@@ -1,17 +1,141 @@
 body {
-	width: 800px;
-	background-color: grey;
+	min-width: 351px;
+	width: 100vw;
+	background-color:#556;
+	background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+	linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+	linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+	linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+	linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+	linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+	background-size:80px 140px;
+	background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+	margin: auto;
+}
+/*======================================NAV==================================================*/
+img#bannerImg{
+	min-width: 351px;
+    width: 100vw;
+    min-height: 160px;
+    max-height: 186px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
 }
 h1 {
 	font-size: 4em;
+	color: white;
 }
 nav {
-	width: 100vw;
-	background-color: white;
-	height: 200px;
+	min-width: 351px;
+	width:100vw;
+	margin: auto;
+	height: 240px;
+	background-color: #445;
 }
 #logoutBtn {
 	float: right;
-	margin-right: 200px;
+	margin-right: 50px;
 	border-radius: 5px;
 }
+
+a.navBtn {
+	color: white;
+	margin: 1px 15px 1px 5px;
+}
+#welcomeMsg {
+	font-size: 2em;
+	color: white;
+	margin-left: 5px
+}
+
+/*=======================================CARDS=============================================*/
+
+div.card {
+	width: 30rem;
+	height: 50rem;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: #fafafa;
+}
+.cardImg {
+	height: 18rem;
+    margin: 0 0 0 7rem;
+    padding-top: 2rem;
+}
+.card-block{
+	padding-left: 3rem;
+}
+li.cardBtns {
+	display: inline-block;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/*=======================================NEW=FORM=========================================*/
+li.form {
+	display: inline-block;
+	padding: 20px 20px;
+}
+#newPForm {
+	background-color: #99a;
+	border: 1px solid black;
+	border-radius: 20px;
+	width: 60vw;
+	margin: auto;
+	margin-bottom: 40px;
+}
+#submitFormBtn {
+	margin-top: 15px;
+}
+textarea {
+	max-width: 195px;
+	max-height:300px;
+}
+/*====================================SHOW=ONE=POKEMON========================================*/
+
+#showImg{
+	width: 60%;
+	float: center;
+}
+
+/*=========================================FOOTER================================================*/
+li.footerBtns {
+	display: inline-block;
+	margin: 20px 2px 20px 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px;
+}
+a {
+	color: white;
+}
+section#footer {
+	background-color: #445;
+}
+
+@media screen and (max-width: 764px) {
+    h1 {
+        font-size: 2em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
