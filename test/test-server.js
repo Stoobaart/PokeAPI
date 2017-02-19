@@ -58,7 +58,7 @@ describe('Pokemons', function() {
       .end(function(err, res){
         res.should.have.status(200);
         res.should.be.html;
-        res.text.should.match(/Pokemon!/);
+        res.text.should.match(/Newest Pokemon/);
         // res.text.should.match(/Testokemon/);
         done();
       });
@@ -88,10 +88,6 @@ describe('Pokemons', function() {
         res.text.should.match(/Olliemon/);
         res.text.should.match(/ice/);
         done();
-        // Pokemon.findByIdAndRemove(pokemon.id, function(err) {
-        //   if (err) return console.log(err);
-        //   done();
-        // });
       });
   });
 
