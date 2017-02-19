@@ -1,14 +1,16 @@
-<nav>
+<nav id="nav">
   <% if(user) { %>
-  	<a href="/">Home</a>
-	<a href="/new">Add Pokemon</a>
+  	<a class="navBtn" href="/">Home</a>
+	<a class="navBtn" href="/new">Add Pokemon</a>
+	<a class="navBtn" href="/users/<%= user.id %>">My Collection</a>
 	<form action="/sessions" method="POST">
 		<input type="hidden" name="_method" value="delete">
 	    <input id="logoutBtn" type="submit" value="Logout">
 	</form>
-    <p>Welcome, <%= user.first_name %></p>
+    <p id="welcomeMsg">Welcome, <%= user.first_name %></p>
   <% } else { %>
 	<a href="/sessions/new">Login</a>
 	<a href="/users/new">Sign up</a>
   <% } %>
+  <img id="bannerImg" src="http://s26.postimg.org/xho8gptzd/754399_pokemon_banner.jpg">
 </nav>
