@@ -1,4 +1,5 @@
 var Pokemon = require('../models/pokemon');
+var User = require('../models/user');
 
 function indexPokemons(req, res) {
 	Pokemon.find({}, function(err, pokemons) {
@@ -45,8 +46,11 @@ function newPokemons(req, res) {
 
 function createPokemons(req, res) {
 	Pokemon.create(req.body, function(err, pokemon) {
-		if(err) req.flash('error' , err.message);
-		res.redirect("/");
+		if(err) req.flash('error' , "Something went wrong when adding your newly caught pokemon to your collection! Please retry");
+		User.findByIdAndUpdate(req.user.id, { $addToSet: { pokemons: pokemon } }, function(err, user) {
+			if (err) req.flash('error', 'Something went wrong when adding your new pokemon, please try again!');
+			res.redirect("/");
+		})
 	});
 }
 
