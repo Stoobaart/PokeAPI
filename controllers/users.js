@@ -1,5 +1,17 @@
 var User = require('../models/user');
 
+function showUser(req, res) {
+  User.findById(req.params.id).populate('pokemons').exec(function(err, user) {
+    if(!user) return res.status(404).send("Pokemon not found");
+    if(err) req.flash('error', err.message);
+    console.log(user);
+    res.render("users/show", {
+      title: "User",
+      user: user
+    });
+  });
+}
+
 // NEW ( AKA Registration )
 function newUser(req,res) {
   res.render('users/new' , { title: "Register" });
@@ -19,5 +31,6 @@ function createUser(req,res){
 
 module.exports = {
   new: newUser,
-  create: createUser
+  create: createUser,
+  show: showUser
 }
