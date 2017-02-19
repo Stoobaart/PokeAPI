@@ -1,51 +1,52 @@
-<h1>FORM</h1>
+<h1>Enter info</h1>
 
-<form action="/<%= pokemon.id %>" method="POST">
+<form id="newPForm" action="/<%= pokemon.id %>" method="POST">
+	<ul>
+		<li class="form">
+			<p>Image URL</p>
+			<input type="text" name="url" value="<%= pokemon.url %>">
+		</li>
+		<li class="form">
+			<p>Name</p>
+			<input type="text" name="name" value="<%= pokemon.name %>">
+		</li>
+		<li class="form">
+			<p>Description</p>
+			<textarea rows="2" cols="19" name="descriptions"><%= pokemon.descriptions %></textarea>
+		</li>
+		<li class="form">
+			<p>Abilities</p>
+			<input type="text" name="abilities" value="<%= pokemon.abilities %>">
+		</li>	
+		<li class="form">
+			<p>Evolutions</p>
+			<input type="text" name="evolutions" value="<%= pokemon.evolutions %>">
+		</li>	
+		<li class="form">
+			<p>Moves</p>
+			<input type="text" name="moves" value="<%= pokemon.moves %>">
+		</li>
+		<li class="form">
+			<p>HP</p>
+			<input type="number" name="hp" value="<%= pokemon.hp %>" min="0" max="999">
+		</li>
+		<li class="form">
+			<p>Attack</p>
+			<input type="number" name="attack" value="<%= pokemon.attack %>" min="0" max="999">
+		</li>
+		<li class="form">
+			<p>Defence</p>
+			<input type="number" name="defence" value="<%= pokemon.defence %>" min="0" max="999">
+		</li>
+		<li class="form">
+			<p>Speed</p>
+			<input type="number" name="speed" value="<%= pokemon.speed %>" min="0" max="999">
+		</li>
 
-	<div>
-		<label>Image URL</label>
-		<input type="text" name="url" value="<%= pokemon.url %>">
-	</div>
-	<div>
-		<label>Name</label>
-		<input type="text" name="name" value="<%= pokemon.name %>">
-	</div>
-	<div>
-		<label>Description</label>
-		<textarea name="descriptions"><%= pokemon.descriptions %></textarea>
-	</div>
-	<div>
-		<label>Abilities</label>
-		<input type="text" name="abilities" value="<%= pokemon.abilities %>">
-	</div>	
-	<div>
-		<label>Evolutions</label>
-		<input type="text" name="evolutions" value="<%= pokemon.evolutions %>">
-	</div>	
-	<div>
-		<label>Moves</label>
-		<input type="text" name="moves" value="<%= pokemon.moves %>">
-	</div>
-	<div>
-		<label>HP</label>
-		<input type="number" name="hp" value="<%= pokemon.hp %>" min="0" max="999">
-	</div>
-	<div>
-		<label>Attack</label>
-		<input type="number" name="attack" value="<%= pokemon.attack %>" min="0" max="999">
-	</div>
-	<div>
-		<label>Defence</label>
-		<input type="number" name="defence" value="<%= pokemon.defence %>" min="0" max="999">
-	</div>
-	<div>
-		<label>Speed</label>
-		<input type="number" name="speed" value="<%= pokemon.speed %>" min="0" max="999">
-	</div>
-
-	<input type="submit" value="Save Pokemon!">
-	<% if(pokemon.id !== "") { %>
-		<input type="hidden" name="_method" value="PUT">
-	<% } %>
-
+		<li class="form"><input id="submitFormBtn" type="submit" value="Save Pokemon!">
+		<% if(pokemon.id !== "") { %>
+			<input type="hidden" name="_method" value="PUT">
+		<% } %>
+		</li>
+	</ul>
 </form>
