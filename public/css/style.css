@@ -20,6 +20,7 @@ img#bannerImg{
     max-height: 186px;
     border-top: 3px solid black;
     border-bottom: 3px solid black;
+    background-image: url(http://s26.postimg.org/xho8gptzd/754399_pokemon_banner.jpg);
 }
 h1 {
 	font-size: 4em;
@@ -73,6 +74,15 @@ ul {
     margin: 0;
     padding: 0;
 }
+img#indexShowImg {
+	float: right;
+    height: 60vh;
+    margin-top: -60vh;
+    margin-right: 5vw;
+}
+div.container {
+	padding-bottom: 5rem;
+}
 /*=======================================NEW=FORM=========================================*/
 li.form {
 	display: inline-block;
@@ -115,6 +125,17 @@ section#footer {
 	background-color: #445;
 }
 
+
+@media screen and (max-width: 600px) {
+    img#indexShowImg {
+	    width: 0px;
+	}
+	img#bannerImg {
+		margin-left: -22vw;
+    	width: 900px;
+	}
+}
+
 @media screen and (max-width: 764px) {
     h1 {
         font-size: 2em;
@@ -123,9 +144,11 @@ section#footer {
 
 
 
-
-
-
+@media screen and (min-width: 764px) {
+	img#indexShowImg {
+	    margin-right: 20vw;
+	}
+}
 
 
 
