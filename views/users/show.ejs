@@ -1,0 +1,33 @@
+<div class="container">
+	<h1>My Pokemon Collection</h1>
+	<div class="row">
+		<% for(var i = 0; i < user.pokemons.length; i++ ) { %>
+				<div class="col-sm-4">
+					<div class="card">
+						<img class="cardImg" src= <%= user.pokemons[i].url %> >
+						<div class="card-block">
+							<h3 class="card-title"><%= user.pokemons[i].name %></h3>
+							<p><%= user.pokemons[i].descriptions %></p>
+							<ul>
+								<li>Abilities: <%= user.pokemons[i].abilities %></li>
+								<li>Evolutions: <%= user.pokemons[i].evolutions %></li>
+								<li>Moves: <%= user.pokemons[i].moves %></li>
+								<li>HP: <%= user.pokemons[i].hp %></li>
+								<li>Attack: <%= user.pokemons[i].attack %></li>
+								<li>Defence: <%= user.pokemons[i].defence %></li>
+								<li>Speed: <%= user.pokemons[i].speed %></li>
+							</ul>
+							<ul id="cardBtns">
+								<li class="cardBtns"><a class="btn btn-primary" href="/<%= user.pokemons[i].id %>/edit">edit</a></li>
+								<li class="cardBtns"><form action="/<%= user.pokemons[i].id %>" method="POST">
+								  <input type="hidden" name="_method" value="DELETE">
+								  <input class="btn btn-primary" type="submit" value="Delete">
+								</form></li>
+								<li class="cardBtns"><a href="/<%= user.pokemons[i]._id %>" class="btn btn-primary">More Info!</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		<% } %>
+	</div>
+</div>
