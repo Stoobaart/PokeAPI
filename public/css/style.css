@@ -10,7 +10,7 @@ body {
 	linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
 	background-size:80px 140px;
 	background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-	margin: auto;
+	/*margin: auto;*/
 }
 /*======================================NAV==================================================*/
 img#bannerImg{
@@ -59,7 +59,7 @@ div.card {
 	background-color: #fafafa;
 }
 .cardImg {
-	height: 18rem;
+	height: 15rem;
     margin: 0 0 0 7rem;
     padding-top: 2rem;
 }
@@ -83,6 +83,9 @@ img#indexShowImg {
 div.container {
 	padding-bottom: 5rem;
 }
+.likeBtn {
+	width: 9rem;
+}
 /*=======================================NEW=FORM=========================================*/
 li.form {
 	display: inline-block;
@@ -102,6 +105,9 @@ li.form {
 textarea {
 	max-width: 195px;
 	max-height:300px;
+}
+.hiddenLike {
+	/*display: none;*/
 }
 /*====================================SHOW=ONE=POKEMON========================================*/
 
