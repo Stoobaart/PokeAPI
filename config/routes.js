@@ -4,6 +4,12 @@ var pokemonsController = require('../controllers/pokemons');
 var usersController = require('../controllers/users');
 var sessionsController = require('../controllers/sessions');
 var pokemonsApiController = require('../controllers/api/pokemons');
+var pokemonsAjaxController = require('../controllers/ajax/pokemons');
+
+// AJAX section
+router.route('/ajax/pokemons')
+  .get(pokemonsAjaxController.show)
+  .put(pokemonsAjaxController.update);
 
 // API section
 router.route('/api/pokemons')

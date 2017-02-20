@@ -7,7 +7,31 @@ $(function(){
 		$("#latestPokemon").html(pokemon);
 		})
 	}, 5000)
+
+
+
+	var pokemon;
+	$.getJSON('http://localhost:3000/api/pokemons', function(json){
+	    pokemon = json;   
+	    checkPokemon();                
+	});         
+
+function checkPokemon() {
+    console.log(pokemon[random]);
+}   
+
+var random = Math.floor((Math.random() * 6));
+console.log(random);
+
+	setInterval(function() {
+		$("#randPokemon").html(pokemon[random]);
+	}, 5000)
+
+
+
 });
+
+
 
 <div class="container">
 	<h1 id="latestPokemon">Newest Pokemon</h1>
