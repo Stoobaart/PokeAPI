@@ -3,7 +3,7 @@ var Pokemon = require('../../models/pokemon');
 
 // INDEX - GET /
 function indexPokemon(req , res) {
-  // get the model to load all the posts. wait for data in the callback
+  // get the model to load all the pokemon. wait for data in the callback
   Pokemon.find({} , function(err, pokemons) {
     if(err) res.status(500).json({error: err.message});
     // data return so now we can render
@@ -66,7 +66,12 @@ function createPokemon(req , res) {
   });
 }
 
-
+function likePokemon(req, res) {
+  Pokemon.findByIdAndUpdate(req.params.id, { $inc: { likes: 1}}, {new: true}, function(err, pokemon) {
+    if (err) return res.status(500).json({ error: err.message});
+    return res.status(200).json({message: "Request sending successfully", likes: pokemon.likes});
+  })
+}
 
 // export all our controller functions in an object
 module.exports = {
@@ -75,6 +80,7 @@ module.exports = {
   show: showPokemon,
   delete: deletePokemon,
   update: updatePokemon,
-  create: createPokemon
+  create: createPokemon,
+  like: likePokemon
 
 }
