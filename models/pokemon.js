@@ -42,6 +42,10 @@ var PokemonSchema = mongoose.Schema({
   speed: {
   	type: Number, 
   	required: true
+  },
+  likes: {
+    type: Number,
+    required: true
   }
 })
 
