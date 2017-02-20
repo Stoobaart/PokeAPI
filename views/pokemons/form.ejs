@@ -42,6 +42,7 @@
 			<p>Speed</p>
 			<input type="number" name="speed" value="<%= pokemon.speed %>" min="0" max="999">
 		</li>
+		<input class="hiddenLike" type="number" name="likes" value="<%= pokemon.likes %>" min="0" max="999">
 
 		<li class="form"><input id="submitFormBtn" type="submit" value="Save Pokemon!">
 		<% if(pokemon.id !== "") { %>
