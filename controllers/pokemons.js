@@ -35,7 +35,8 @@ function newPokemons(req, res) {
 	    hp: 0,
 	    attack: 0,
 	    defence: 0,
-	    speed: 0
+	    speed: 0,
+	    likes: 0
 	}
 
 	res.render("pokemons/new", {
