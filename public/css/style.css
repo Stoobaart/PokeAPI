@@ -106,7 +106,7 @@ textarea {
 /*====================================SHOW=ONE=POKEMON========================================*/
 
 #showImg{
-	width: 60%;
+	height: 60vh;
 	float: center;
 }
 
@@ -127,7 +127,7 @@ section#footer {
 
 
 @media screen and (max-width: 600px) {
-    img#indexShowImg {
+    img#indexShowImg, #showImg{
 	    width: 0px;
 	}
 	img#bannerImg {
